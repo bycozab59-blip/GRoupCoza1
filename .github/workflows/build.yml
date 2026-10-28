@@ -19,9 +19,13 @@ jobs:
 
       - name: Accept SDK Licenses and Install NDK
         run: |
-          export ANDROID_SDK_ROOT=$ANDROID_HOME
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;25.2.9519653" "cmake;3.22.1"
+
+      - name: Generate Gradle Wrapper
+        working-directory: android
+        run: |
+          gradle wrapper --gradle-version 8.2
 
       - name: Build APK
         working-directory: android
