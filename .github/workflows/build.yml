@@ -29,15 +29,9 @@ jobs:
           unzip -q gradle-8.2-bin.zip -d /opt/gradle
           echo "/opt/gradle/gradle-8.2/bin" >> $GITHUB_PATH
 
-      - name: Generate Wrapper
-        working-directory: android
-        run: gradle wrapper
-
       - name: Build APK
         working-directory: android
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon
+        run: gradle assembleRelease --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
