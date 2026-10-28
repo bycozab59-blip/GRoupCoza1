@@ -22,16 +22,18 @@ jobs:
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;25.2.9519653" "cmake;3.22.1"
 
-      - name: Generate Gradle Wrapper
-        working-directory: android
+      - name: Setup Gradle
         run: |
-          gradle wrapper --gradle-version 8.2
+          cd android
+          gradle init --type basic --dsl groovy --project-name GRoupCoza --no-incubating 2>/dev/null || true
+          gradle wrapper --gradle-version 8.2 --no-daemon 2>/dev/null || true
+          ls -la
 
       - name: Build APK
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
