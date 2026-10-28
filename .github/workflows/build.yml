@@ -18,11 +18,9 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install NDK
         run: |
-          echo "y" | sdkmanager "ndk;25.2.9519653" "cmake;3.22.1"
+          yes | sdkmanager --licenses
+          sdkmanager "ndk;25.2.9519653" "cmake;3.22.1"
 
       - name: Build APK
         working-directory: android
