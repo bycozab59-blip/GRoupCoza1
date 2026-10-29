@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#0D0D0D">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GRoupCoza"
+        android:textSize="28sp"
+        android:textColor="#FF4444"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="4dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="by B2Y Blaster"
+        android:textSize="12sp"
+        android:textColor="#888888"
+        android:gravity="center"
+        android:paddingBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnInject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ATTACH"
+        android:backgroundTint="#FF4444"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnScriptHub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SCRIPT HUB"
+        android:backgroundTint="#222222"
+        android:textColor="#FF4444"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etScript"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:hint="-- paste script here"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#555555"
+        android:background="#1A1A1A"
+        android:padding="12dp"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnExecute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EXECUTE"
+        android:backgroundTint="#FF4444"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ready"
+        android:textColor="#888888"
+        android:gravity="center"/>
+
+</LinearLayout>
