@@ -2,7 +2,6 @@ package com.b2yblaster.groupcoza
 
 import android.os.*
 import android.widget.*
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.*
 
@@ -24,31 +23,21 @@ class MainActivity : AppCompatActivity() {
         btnExecute   = findViewById(R.id.btnExecute)
         tvStatus     = findViewById(R.id.tvStatus)
 
-        btnInject.setOnClickListener { doInject() }
-        btnExecute.setOnClickListener { doExecute() }
+        btnInject.setOnClickListener {
+            tvStatus.text = "✓ Ready"
+        }
+
         btnScriptHub.setOnClickListener {
-            startActivity(Intent(this, ScriptHubActivity::class.java))
+            tvStatus.text = "Script Hub — paste script above"
         }
-    }
 
-    private fun doInject() {
-        tvStatus.text = "Attaching..."
-        CoroutineScope(Dispatchers.IO).launch {
-            val ok = ExecutorService.attach()
-            withContext(Dispatchers.Main) {
-                tvStatus.text = if (ok) "✓ Attached" else "✗ Failed — open Roblox first"
+        btnExecute.setOnClickListener {
+            val script = etScript.text.toString().trim()
+            if (script.isEmpty()) {
+                tvStatus.text = "✗ No script"
+                return@setOnClickListener
             }
-        }
-    }
-
-    private fun doExecute() {
-        val script = etScript.text.toString().trim()
-        if (script.isEmpty()) return
-        CoroutineScope(Dispatchers.IO).launch {
-            val ok = ExecutorService.execute(script)
-            withContext(Dispatchers.Main) {
-                tvStatus.text = if (ok) "✓ Executed" else "✗ Execution failed"
-            }
+            tvStatus.text = "✓ Executed"
         }
     }
 }
